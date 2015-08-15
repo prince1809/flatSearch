@@ -10,22 +10,36 @@ var {
   StyleSheet,
   Text,
   View,
+  NavigatorIOS,
+  TabBarIOS,
+  PixelRatio,
 } = React;
 
+var TabBarButton = require('./components/TabBarButton.js');
 var flatSearch = React.createClass({
+
+  getInitialState: function(){
+    return{
+      tab: 'search'
+    };
+  },
+
   render: function() {
+
+    var screenElement;
+
+  /*  if(this.state.tab == 'saved')
+       screenElement = (<ScreenNavigator title='Saved' component={SavedScreen} key='saved' />);
+   else
+      screenElement = (<ScreenNavigator title='Search' component={SearchScreen} key='search' />);
+      */
+
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+      <View style={styles.app}>
+        <View style={styles.tabbar}>
+          <TabBarButton tab='search' label='Homes' selected={this.state.tab} onChange={this.handleSelect}/>
+          <TabBarButton tab='saved' label='Homes' selected={this.state.tab} onChange={this.handleSelect}/>
+        </View>
       </View>
     );
   }
