@@ -12,6 +12,8 @@ var {
   PixelRatio,
 } = React;
 
+var globalVariables = require('../globalVariables.js');
+
 var TabBarButton = React.createClass({
 
   render: function(){
