@@ -15,6 +15,8 @@ var {
   PixelRatio,
 } = React;
 
+var Dimensions = require('Dimensions');
+var {width, height} = Dimensions.get('window');
 var TabBarButton = require('./components/TabBarButton.js');
 var flatSearch = React.createClass({
 
@@ -46,22 +48,20 @@ var flatSearch = React.createClass({
 });
 
 var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+  app :{
+    width, height
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+
+  tabbar: {
+    width: width,
+    height: 49,
+    shadowColor: 'black',
+    shadowOffset: { height: -2, width: 0},
+    shadowOpacity: 0.05,
+    shadowRadius: 3,
+    flexDirection: 'row',
+    justifyContent: 'center'
+  }
 });
 
 AppRegistry.registerComponent('flatSearch', () => flatSearch);

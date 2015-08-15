@@ -3,13 +3,11 @@
 var React = require('react-native');
 
 var {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
-  NavigatorIOS,
-  TabBarIOS,
-  PixelRatio,
+  Image,
+  TouchableWithoutFeedback
 } = React;
 
 var globalVariables = require('../globalVariables.js');
@@ -17,6 +15,11 @@ var globalVariables = require('../globalVariables.js');
 var TabBarButton = React.createClass({
 
   render: function(){
+
+    var icon;
+    var isSelected  = (this.props.tab == this.props.selected);
+
+    
     return(
       <View>
       <Text>
