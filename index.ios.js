@@ -42,6 +42,7 @@ var flatSearch = React.createClass({
 
     return (
       <View style={styles.app}>
+        {screenElement}
         <View style={styles.tabbar}>
           <TabBarButton tab='search' label='Homes' selected={this.state.tab} onChange={this.handleSelect}/>
           <TabBarButton tab='saved' label='Homes' selected={this.state.tab} onChange={this.handleSelect}/>
