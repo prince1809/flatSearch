@@ -18,6 +18,10 @@ var {
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 var TabBarButton = require('./components/TabBarButton.js');
+var ScreenNavigator = require('./ScreenNavigator.js');
+
+var SearchScreen  = require('./SearchScreen.js');
+var SavedScreen = require('./SavedScreen.js');
 var flatSearch = React.createClass({
 
   getInitialState: function(){
@@ -30,11 +34,11 @@ var flatSearch = React.createClass({
 
     var screenElement;
 
-  /*  if(this.state.tab == 'saved')
+    if(this.state.tab == 'saved')
        screenElement = (<ScreenNavigator title='Saved' component={SavedScreen} key='saved' />);
    else
       screenElement = (<ScreenNavigator title='Search' component={SearchScreen} key='search' />);
-      */
+
 
     return (
       <View style={styles.app}>
