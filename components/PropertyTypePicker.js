@@ -28,8 +28,23 @@ var PropertyTypePicker = React.createClass({
             <PropertyTypePickerButton
               text='Single Family'
               icon='home'
+              value='DETACHD'
               current={this.props.value}
               onPress={this.handleChange}/>
+
+            <PropertyTypePickerButton
+                text='Condo'
+                icon='condo'
+                value='CONDO'
+                current={this.props.value}
+                onPress={this.handleChange}/>
+
+            <PropertyTypePickerButton
+                text='Multi Family'
+                icon='multi'
+                value='ATTACHD'
+                current={this.props.value}
+                onPress={this.handleChange}/>
 
         </View>
       </View>
