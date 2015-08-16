@@ -19,6 +19,13 @@ var TabBarButton = React.createClass({
     var icon;
     var isSelected  = (this.props.tab == this.props.selected);
 
+    if(this.props.tab === 'search'){
+      icon = (isSelected) ? require('image!TabBar-House-Icon-Active'): require('image!TabBar-House-Icon');
+    }
+
+    if(this.props.tab === 'saved'){
+      icon = (isSelected) ? require('image!TabBar-Favorite-Icon-Active') : require('image!TabBar-Favorite-Icon');
+    }
 
     return(
       <TouchableWithoutFeedback onPress={this.handlePress}>
