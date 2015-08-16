@@ -22,14 +22,36 @@ var TabBarButton = React.createClass({
 
     return(
       <TouchableWithoutFeedback onPress={this.handlePress}>
-        <View>
-          <Text>
-             React  #######
-          </Text>
+        <View style={styles.button}>
+          <Image style={styles.icon} source={icon} />
+          <Text style={[styles.text, isSelected && styles.textActive]}>{this.props.label}</Text>
         </View>
       </TouchableWithoutFeedback>
     );
   }
 });
 
+
+var styles = StyleSheet.create({
+  button: {
+    flex: 1,
+    height: 49,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  icon: {
+    width: 24,
+    height: 24
+  },
+  text: {
+    fontSize: 10,
+    color: globalVariables.textColor,
+    textAlign: 'center'
+  },
+  textActive: {
+    color: globalVariables.green,
+  }
+
+})
 module.exports = TabBarButton;
