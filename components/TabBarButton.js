@@ -19,13 +19,15 @@ var TabBarButton = React.createClass({
     var icon;
     var isSelected  = (this.props.tab == this.props.selected);
 
-    
+
     return(
-      <View>
-      <Text>
-          Welcome to React Native!
-      </Text>
-      </View>
+      <TouchableWithoutFeedback onPress={this.handlePress}>
+        <View>
+          <Text>
+             React  #######
+          </Text>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 });
