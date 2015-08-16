@@ -20,11 +20,22 @@ var globalVariables = require('./globalVariables.js');
 
 
 var SearchScreen = React.createClass({
+  getInitialState: function(){
+    return{
+      propertyType: 'DETACHD',
+      builtRange: [1900,2020],
+      priceRange: [300,800],
+      zipCodes: ['97202'],
+      bedrooms: 3,
+      bathrooms: 1
+    }
+  },
   render: function(){
     return(
       <ScrollView style={styles.container}>
         <View style={styles.page}>
-          
+          <PropertyTypePicker value={this.state.PropertyType} onChange={this.saveQueryOptions} />
+
         </View>
       </ScrollView>
     )
