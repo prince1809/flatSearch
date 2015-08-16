@@ -11,6 +11,7 @@ var {
 } = React;
 
 var globalStyles = require('./SearchGlobalStyles.js');
+var YearPicker = require('./YearPicker.js');
 
 
 var BuiltRangePicker = React.createClass({
@@ -25,7 +26,8 @@ var BuiltRangePicker = React.createClass({
       <View style={globalStyles.container}>
       <Text style={globalStyles.label}>Built Between </Text>
       <View style={globalStyles.innerBox}>
-
+          <YearPicker label='Earliest Date' onChange={this.handleStartChange} value={this.props.value[0]} />
+          <YearPicker label='Latest Date' onChange={this.handleEndChange} value={this.props.value[1]} />
       </View>
       </View>
     );
