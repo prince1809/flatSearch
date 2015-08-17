@@ -16,6 +16,7 @@ var {width, height} = Dimensions.get('window');
 
 var PropertyTypePicker = require('./components/PropertyTypePicker.js');
 var BuiltRangePicker = require('./components/BuiltRangePicker.js');
+var PriceRangePicker = require('./components/PriceRangePicker.js');
 
 var globalVariables = require('./globalVariables.js');
 
@@ -37,6 +38,7 @@ var SearchScreen = React.createClass({
         <View style={styles.page}>
           <PropertyTypePicker value={this.state.PropertyType} onChange={this.saveQueryOptions} />
           <BuiltRangePicker value={this.state.builtRange} onChange={this.saveQueryOptions} />
+          <PriceRangePicker value={this.state.priceRange} onChange={this.saveQueryOptions} />
 
         </View>
       </ScrollView>
