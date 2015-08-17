@@ -11,7 +11,7 @@ var {
 } = React;
 
 var globalStyles = require('./SearchGlobalStyles.js');
-//var PricePicker = require('./PricePicker.js');
+var PricePicker = require('./PricePicker.js');
 
 var PriceRangePicker = React.createClass({
   getDefaultProps: function(){
@@ -24,7 +24,10 @@ var PriceRangePicker = React.createClass({
     return(
       <View style={globalStyles.container}>
         <Text style={globalStyles.label}> Price Between </Text>
-
+        <View style={globalStyles.innerBox}>
+            <PricePicker label='Low Price' onChange={this.handleStartChange} value={this.props.value[0]} />
+            <PricePicker label='High Price' onChange={this.handleEndChange} value={this.props.value[1]} />
+        </View>
       </View>
     );
   }
