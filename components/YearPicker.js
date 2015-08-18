@@ -25,7 +25,7 @@ var YearPicker = React.createClass({
 
   render: function(){
     var years = [];
-    for(var i=1950; i<=2020; i+=5){
+    for(var i=1900; i<=2020; i+=5){
       years.push(i);
     };
     return(

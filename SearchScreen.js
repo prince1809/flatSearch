@@ -20,6 +20,7 @@ var PriceRangePicker = require('./components/PriceRangePicker.js');
 var ZipCodeEntry = require('./components/ZipCodeEntry.js');
 var NumberPicker = require('./components/NumberPicker.js');
 
+var SearchResults = require('./components/SearchResults.js');
 var globalVariables = require('./globalVariables.js');
 
 
@@ -27,7 +28,7 @@ var SearchScreen = React.createClass({
   getInitialState: function(){
     return{
       propertyType: 'DETACHD',
-      builtRange: [1900,2020],
+      builtRange: [1950,2010],
       priceRange: [300,800],
       zipCodes: ['97202'],
       bedrooms: 3,
@@ -55,6 +56,16 @@ var SearchScreen = React.createClass({
         </View>
       </ScrollView>
     )
+  },
+
+  onSearch: function(){
+    this.props.navigator.push({
+      component: SearchResults,
+      title: 'Search Results',
+      passProps: {
+        search: this.state
+      },
+    });
   }
 
 });
