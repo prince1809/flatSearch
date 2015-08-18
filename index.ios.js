@@ -22,6 +22,9 @@ var ScreenNavigator = require('./ScreenNavigator.js');
 
 var SearchScreen  = require('./SearchScreen.js');
 var SavedScreen = require('./SavedScreen.js');
+
+var globalVariables = require('./globalVariables.js');
+
 var flatSearch = React.createClass({
 
   getInitialState: function(){
@@ -45,11 +48,17 @@ var flatSearch = React.createClass({
         {screenElement}
         <View style={styles.tabbar}>
           <TabBarButton tab='search' label='Homes' selected={this.state.tab} onChange={this.handleSelect}/>
-          <TabBarButton tab='saved' label='Homes' selected={this.state.tab} onChange={this.handleSelect}/>
+          <TabBarButton tab='saved' label='Saved' selected={this.state.tab} onChange={this.handleSelect}/>
         </View>
       </View>
     );
-  }
+  },
+
+  handleSelect: function(tab){
+    this.setState({
+      tab: tab,
+    });
+  },
 });
 
 var styles = StyleSheet.create({
