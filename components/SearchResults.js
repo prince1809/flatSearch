@@ -65,7 +65,9 @@ var SearchResults = React.createClass({
   },
 
   queryRMLS: function(){
+
     var search = this.props.search;
+    console.log(search);
 
     var options = [
 			'ReportID=RC_RESULT',

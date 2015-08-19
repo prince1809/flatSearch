@@ -1,8 +1,12 @@
 var $ = require('cheerio');
 var S = require('string');
 
+var getFormData = require('./form-data.js');
+
 module.exports = function(input){
   console.log('-----parsing of html started------');
+
+  var formData = getFormData(input);
 
   var page = $.load(input);
 
@@ -50,4 +54,12 @@ module.exports = function(input){
     if(output.id)
       results.push(output);
   });
+
+  console.log(results);
+
+  return {
+    next: nextPage || '',
+    houses: results,
+    form: formData
+  };
 }
