@@ -23,7 +23,7 @@ var SearchResults = React.createClass({
   getInitialState: function(){
     return{
       dataSource: new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2}),
-      house: [],
+      houses: [],
       filter: '',
       searchPending: true
     };
@@ -67,7 +67,6 @@ var SearchResults = React.createClass({
   queryRMLS: function(){
 
     var search = this.props.search;
-    console.log(search);
 
     var options = [
 			'ReportID=RC_RESULT',
@@ -136,8 +135,24 @@ var SearchResults = React.createClass({
   processsResults: function(html){
     var data = parse.SearchResults(html);
 
-  },
+    //cancel out if no data was found
+    if(!data.houses.length)
+          return;
 
+   var newHouses = this.state.houses.concat(data.houses);
+
+   this.setState({
+     houses: newHouses,
+     searchPending: false,
+     dataSource: this.getDataSource(newHouses),
+     form: data.form,
+     next: data.next
+   });
+
+  },
+  getDataSource: function(houses){
+    return this.state.dataSource.cloneWithRows(houses);
+  },
   render: function(){
     return(
       <View style={styles.container}>

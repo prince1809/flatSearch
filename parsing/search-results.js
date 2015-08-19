@@ -55,8 +55,6 @@ module.exports = function(input){
       results.push(output);
   });
 
-  console.log(results);
-
   return {
     next: nextPage || '',
     houses: results,
