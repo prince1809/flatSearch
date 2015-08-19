@@ -52,6 +52,7 @@ var SearchResults = React.createClass({
         </View>
       )
     }
+    return <ActivityIndicatorIOS style={styles.scrollSpinner} />;
   },
   renderRow: function(house){
     return(
@@ -154,6 +155,13 @@ var SearchResults = React.createClass({
     return this.state.dataSource.cloneWithRows(houses);
   },
   render: function(){
+    if(!this.state.searchPending && !this.state.houses.length){
+      return(
+        <View style={styles.container}>
+          <SearchNoResults />
+        </View>
+      );
+    }
     return(
       <View style={styles.container}>
         <ListView
@@ -178,6 +186,15 @@ var styles = StyleSheet.create({
     flex: 1,
     paddingTop: 64,
     backgroundColor: globalVariables.background,
+  },
+  centerText : {
+    alignItems: 'center'
+  },
+  spinner: {
+    width: 30
+  },
+  scrollSpinner: {
+    marginVertical: 20
   },
   doneView: {
     flexDirection: 'row',
