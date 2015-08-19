@@ -132,7 +132,7 @@ var SearchResults = React.createClass({
   },
 
   processsResults: function(html){
-    console.log(html);
+    var data = parse.SearchResults(html);
 
   },
 
