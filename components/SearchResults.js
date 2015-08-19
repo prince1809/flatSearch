@@ -12,6 +12,7 @@ var {
   View
 } = React;
 
+var HouseCell = require('./HouseCell.js');
 var globalVariables = require('../globalVariables.js');
 
 
@@ -37,6 +38,34 @@ var SearchResults = React.createClass({
 
     };
   },
+  componentDidMount: function(){
+    this.queryRMLS();
+  },
+  renderFooter: function(){
+    if(!this.state.next && !this.state.searchPending){
+      return(
+        <View style={styles.doneView}>
+          <Image source={require('image!foxy')} style={styles.doneImage} />
+        </View>
+      )
+    }
+  },
+  renderRow: function(house){
+    return(
+      <HouseCell
+        onSelect={() => this.selectHouse(house)}
+        key={house.id}
+        house={house}
+        />
+    );
+
+  },
+
+  queryRMLS: function(){
+    var search = this.props.search;
+
+    console.log(search);
+  },
   render: function(){
     return(
       <View style={styles.container}>
@@ -47,7 +76,7 @@ var SearchResults = React.createClass({
           renderRow={this.renderRow}
           onEndReached= {this.onEndReached}
           automaticallyAdjustContentInsets={false}
-          keyboardDismissMode="onDrag"
+          keyboardDismissMode="on-drag"
           keyboardShouldPersistTaps={false}
           showsVerticalScrollIndicator={true}
           />
@@ -62,7 +91,15 @@ var styles = StyleSheet.create({
     flex: 1,
     paddingTop: 64,
     backgroundColor: globalVariables.background,
-  }
+  },
+  doneView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  doneImage: {
+    width: 302 / 5,
+    height: 252 / 5
+  },
 });
 
 module.exports = SearchResults;
