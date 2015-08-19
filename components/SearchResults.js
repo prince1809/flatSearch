@@ -13,6 +13,9 @@ var {
 } = React;
 
 var HouseCell = require('./HouseCell.js');
+
+var parse = require('../parsing/index.js');
+
 var globalVariables = require('../globalVariables.js');
 
 
