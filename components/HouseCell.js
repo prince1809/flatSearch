@@ -36,7 +36,15 @@ var HouseCell = React.createClass({
       <View style={styles.item}>
         <ActivityIndicatorIOS style={styles.spinner} />
         <TouchableHighlight underlayColor={'#fafafa'} activeOpacity={0.9} onPress={this.props.onSelect}>
-          {ribbonBox}
+          <Image
+            style={styles.image}
+            source={{uri: this.props.house.image}}>
+              {ribbonBox}
+              <View style={styles.detailContainer}>
+                <Text style={styles.addressText} numberOfLines={1}>{this.props.house.specs.Address}</Text>
+
+              </View>
+          </Image>
         </TouchableHighlight>
       </View>
     );
@@ -62,6 +70,10 @@ var styles = StyleSheet.create({
     left: (width/2)-20,
     top: 90
   },
+  image: {
+    height: 240,
+    resizeMode: Image.resizeMode.cover,
+  },
   priceContainer:{
     position: 'absolute',
     backgroundColor: globalVariables.green,
@@ -78,6 +90,21 @@ var styles = StyleSheet.create({
     color: '#fff',
     fontSize: 15,
     fontWeight: 'bold'
+  },
+  detailContainer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    backgroundColor: 'white',
+    height: 70,
+    padding: 10,
+  },
+  addressText: {
+    color: globalVariables.textColor,
+    fontSize: 14,
+    marginTop: 5,
+    marginBottom: 5,
+    textAlign: 'center'
   }
 });
 
