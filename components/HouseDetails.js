@@ -16,6 +16,7 @@ var Dimensions = require('Dimensions');
 var {width,height} = Dimensions.get('window');
 
 var HouseDetailsCaroselImage = require('./HouseDetailsCaroselImage.js');
+var SaveButton = require('./SaveButton.js');
 
 var parse = require('../parsing/index.js');
 var globalVariables = require('../globalVariables.js');
@@ -102,7 +103,7 @@ var HouseDetails = React.createClass({
   render: function(){
 
     var images = this.props.images || this.state.images || [this.props.house.image] || [];
-    
+
     var caroselImages = [];
     _.each(images,function(item){
       caroselImages.push(
@@ -110,23 +111,30 @@ var HouseDetails = React.createClass({
       );
     });
 
+     var saveData ={
+       house: this.props.house,
+       images: images,
+     }
+
     return(
       <ScrollView
        scrollsToTop={true}
        style={styles.container}>
-       <ScrollView
-       alwaysBounceHorizontal={true}
-       alwaysBounceVertical={false}
-       automaticallyAdjustContentInsets={false}
-       showsVerticalScrollIndicator={false}
-       horizontal={true}
-       pagingEnabled={true}
-       scrollsToTop={false}
-       bounces={false}
-       contentOffSet={{x:0, y:0}}
-       contentContainerStyle={[styles.carosel,{width: caroselImages.length*width}]}>
-       {caroselImages}
-       </ScrollView>
+                 <ScrollView
+                     alwaysBounceHorizontal={true}
+                     alwaysBounceVertical={false}
+                     automaticallyAdjustContentInsets={false}
+                     showsVerticalScrollIndicator={false}
+                     horizontal={true}
+                     pagingEnabled={true}
+                     scrollsToTop={false}
+                     bounces={false}
+                     contentOffSet={{x:0, y:0}}
+                     contentContainerStyle={[styles.carosel,{width: caroselImages.length*width}]}>
+                     {caroselImages}
+                 </ScrollView>
+
+                 <SaveButton data={saveData} />
 
       </ScrollView>
     );
@@ -137,6 +145,10 @@ var HouseDetails = React.createClass({
 var styles = StyleSheet.create({
   container:{
     backgroundColor: globalVariables.background,
+  },
+  carosel: {
+    width: width,
+    height:245,
   }
 });
 
