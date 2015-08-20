@@ -47,6 +47,22 @@ var HouseCell = React.createClass({
                     <Image style={styles.iconImage} source={require('image!bed-icon')} />
                       <Text style={styles.iconText}>{this.props.house.specs.Beds}</Text>
                   </View>
+
+                  <View style={[styles.iconItem, styles.bedBoxIcons]}>
+                    <Image style={styles.iconImage} source={require('image!bath-icon')} />
+                    <Text style={styles.iconText} >{this.props.house.specs.Baths}</Text>
+                  </View>
+
+                  <View style={styles.iconItem}>
+                    <Image style={styles.iconImage} source={require('image!ruler-icon')} />
+                    <Text style={styles.iconText} >{this.props.house.specs.Sqft + 'sqft'}</Text>
+                  </View>
+
+                  <View style={styles.iconItem}>
+                    <Image style={styles.iconImage} source={require('image!crane-icon')} />
+                    <Text style={styles.iconText} >{this.props.house.specs.YrBuilt}</Text>
+                  </View>
+
                 </View>
               </View>
           </Image>
