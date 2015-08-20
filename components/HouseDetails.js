@@ -58,16 +58,21 @@ var HouseDetails = React.createClass({
 		})
 		.then((response) => response.text())
 		.then((responseText) => {
-			//console.log('GOT RMLS DETAIL');
-			 console.log(responseText);
+			console.log('GOT RMLS DETAIL');
+			 //console.log(responseText);
 
-			//this.processResults(responseText);
+			this.processResults(responseText);
 		})
 		.catch(function (error) {
 			console.error('An error occured');
 			console.error(error.message);
 		});
 	},
+
+  processResults: function(html){
+    var data = parse.HouseDetail(html);
+    console.log(data);
+  },
 
   render: function(){
     return(
