@@ -42,7 +42,12 @@ var HouseCell = React.createClass({
               {ribbonBox}
               <View style={styles.detailContainer}>
                 <Text style={styles.addressText} numberOfLines={1}>{this.props.house.specs.Address}</Text>
-
+                <View style={styles.iconContainer}>
+                  <View style={[styles.iconItem,styles.bedBoxIcons]}>
+                    <Image style={styles.iconImage} source={require('image!bed-icon')} />
+                      <Text style={styles.iconText}>{this.props.house.specs.Beds}</Text>
+                  </View>
+                </View>
               </View>
           </Image>
         </TouchableHighlight>
@@ -105,6 +110,29 @@ var styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
     textAlign: 'center'
+  },
+  iconContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  iconItem: {
+    flex: 3,
+    justifyContent: 'center',
+    flexDirection: 'row'
+  },
+  bedBoxIcons: {
+    flex: 2
+  },
+  iconImage: {
+    width: 24,
+    height: 24
+  },
+  iconText: {
+    fontSize: 14,
+    color: globalVariables.textColor,
+    lineHeight: 20,
+    marginLeft: 3
   }
 });
 
