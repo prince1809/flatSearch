@@ -15,6 +15,8 @@ var _ = require('lodash');
 var Dimensions = require('Dimensions');
 var {width,height} = Dimensions.get('window');
 
+var HouseDetailsCaroselImage = require('./HouseDetailsCaroselImage.js');
+
 var parse = require('../parsing/index.js');
 var globalVariables = require('../globalVariables.js');
 
@@ -76,17 +78,66 @@ var HouseDetails = React.createClass({
   },
 
   geocodeAddress: function(address){
-    console.log(address);
+    fetch(globalVariables.geocodeServer + '?address='+encodeURIComponent(address))
+    .then((response) => response.json())
+    .then((response) => {
+      if(!_.isArray(response.results)) return;
+
+      var location = response.results[0].geometry.location;
+
+      this.setState({
+        latitude: location.lat,
+        longitude: location.lng,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
+      });
+
+    })
+    .catch(function(error){
+      console.log('An error occured');
+      console.log(error.message);
+    });
   },
 
   render: function(){
+
+    var images = this.props.images || this.state.images || [this.props.house.image] || [];
+    
+    var caroselImages = [];
+    _.each(images,function(item){
+      caroselImages.push(
+        <HouseDetailsCaroselImage image={item} key={item} />
+      );
+    });
+
     return(
-      <ScrollView>
+      <ScrollView
+       scrollsToTop={true}
+       style={styles.container}>
+       <ScrollView
+       alwaysBounceHorizontal={true}
+       alwaysBounceVertical={false}
+       automaticallyAdjustContentInsets={false}
+       showsVerticalScrollIndicator={false}
+       horizontal={true}
+       pagingEnabled={true}
+       scrollsToTop={false}
+       bounces={false}
+       contentOffSet={{x:0, y:0}}
+       contentContainerStyle={[styles.carosel,{width: caroselImages.length*width}]}>
+       {caroselImages}
+       </ScrollView>
 
       </ScrollView>
     );
   }
 
+});
+
+var styles = StyleSheet.create({
+  container:{
+    backgroundColor: globalVariables.background,
+  }
 });
 
 module.exports = HouseDetails;
