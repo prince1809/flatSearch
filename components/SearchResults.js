@@ -13,6 +13,7 @@ var {
 } = React;
 
 var HouseCell = require('./HouseCell.js');
+var HouseDetails = require('./HouseDetails.js');
 
 var parse = require('../parsing/index.js');
 
@@ -62,6 +63,20 @@ var SearchResults = React.createClass({
         house={house}
         />
     );
+
+  },
+
+  selectHouse: function(house){
+    console.log(house);
+
+    this.props.navigator.push({
+      component: HouseDetails,
+      title: 'Details',
+      passProps: {
+        house: house,
+        form: this.state.form
+      },
+    });
 
   },
 
