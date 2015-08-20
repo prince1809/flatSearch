@@ -71,7 +71,12 @@ var HouseDetails = React.createClass({
 
   processResults: function(html){
     var data = parse.HouseDetail(html);
-    console.log(data);
+    if(this.props.house.specs && this.props.house.specs.Address)
+      this.geocodeAddress(this.props.house.specs.Address);
+  },
+
+  geocodeAddress: function(address){
+    console.log(address);
   },
 
   render: function(){
